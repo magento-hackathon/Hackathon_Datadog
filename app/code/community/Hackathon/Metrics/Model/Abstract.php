@@ -17,5 +17,7 @@ class Hackathon_Metrics_Model_Abstract
     extends Mage_Core_Model_Abstract
     implements Hackathon_Metrics_Model_Interface
 {
+    public function pushData($key, $value){
 
+    }
 }

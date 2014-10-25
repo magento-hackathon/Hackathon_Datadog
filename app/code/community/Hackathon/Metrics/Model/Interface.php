@@ -15,5 +15,5 @@
  */
 interface Hackathon_Metrics_Model_Interface
 {
-
+    public function pushData($key, $value);
 }
