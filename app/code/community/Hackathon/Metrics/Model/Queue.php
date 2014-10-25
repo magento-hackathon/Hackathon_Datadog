@@ -20,9 +20,12 @@ class Hackathon_Metrics_Model_Queue
      * @param $value
      * @return Hackathon_Metrics_Model_Queue
      */
-    public function addMessage($key, $value)
+    public function addMessage($key, $value, $type)
     {
-        $this->_messages[$key] = $value;
+        $this->_messages[$key] = [
+            'value' => $value,
+            'type' => $type,
+        ];
         return $this;
     }
 
@@ -38,8 +41,9 @@ class Hackathon_Metrics_Model_Queue
                 throw new ErrorException("Your channel doesn't implement the channel interface.");
             }
 
-            foreach ($this->_messages as $key => $value) {
-                $channel->send($key, $value);
+            foreach ($this->_messages as $key => $data) {
+                list($value, $type) = $data;
+                $channel->send($key, $value, $type);
             }
 
             $this->_messages = [];

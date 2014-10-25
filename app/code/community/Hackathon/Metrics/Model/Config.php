@@ -18,6 +18,11 @@ class Hackathon_Metrics_Model_Config extends Mage_Core_Model_Abstract
 
     const CONFIG_XML_NODE_CHANNELS = 'global/metrics/channels';
 
+    const CHANNEL_MESSAGE_TYPE_INCREMENT = 'increment';
+    const CHANNEL_MESSAGE_TYPE_HISTOGRAM = 'histogram';
+    const CHANNEL_MESSAGE_TYPE_GAUGE     = 'gauge';
+    const CHANNEL_MESSAGE_TYPE_TIMING    = 'timing';
+
     /**
      * Is active?
      * @return bool

@@ -19,8 +19,9 @@ interface Hackathon_Metrics_Model_Channel_Interface
     /**
      * Send data
      * @param string $key The metric key
-     * @param string|int $value the metric value
+     * @param string|int $value The metric value
+     * @param string $type The metric type
      */
-    public function send($key, $value);
+    public function send($key, $value, $type);
 
 }
