@@ -9,6 +9,8 @@
  * @copyright Copyright (c) 2014 Magento Hackathon (http://mage-hackathon.de)
  */
 
+require_once 'Datadog/Datadogstatsd.php';
+
 /**
  * Channel_Datadog_Socket Model
  * @package Hackathon_Metrics
@@ -17,5 +19,14 @@ class Hackathon_Metrics_Model_Channel_Datadog_Socket
     extends Hackathon_Metrics_Model_Channel_Abstract
     implements Hackathon_Metrics_Model_Channel_Interface
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    public function send($key, $value)
+    {
+        Datadogstatsd::increment($key, $value);
+        return $this;
+    }
 
 }
