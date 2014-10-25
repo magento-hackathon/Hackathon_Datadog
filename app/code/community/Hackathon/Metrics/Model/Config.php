@@ -33,6 +33,11 @@ class Hackathon_Metrics_Model_Config extends Mage_Core_Model_Abstract
      */
     public function getActiveChannels()
     {
+        // Not active?
+        if (!$this->isActive()) {
+            return [];
+        }
+
         if (!$activeChannels = $this->getData('_active_channels')) {
             $activeChannels = [];
             $config = Mage::app()->getConfig();
