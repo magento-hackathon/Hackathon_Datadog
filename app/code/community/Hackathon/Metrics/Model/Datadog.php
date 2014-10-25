@@ -44,7 +44,7 @@ class Hackathon_Metrics_Model_Datadog
         try{
             $curl->read();
         } catch(Exception $e){
-            Mage::log('Error:'.$e);
+            Mage::logException($e);
         }
 
         Mage::log($curl->getError());
