@@ -16,7 +16,7 @@
 class Hackathon_Metrics_Model_Config extends Mage_Core_Model_Abstract
 {
 
-    const CONFIG_XML_PATH_GENERAL_ACTIVE = 'hackathon_metrics/general/is_active';
+    const CONFIG_XML_NODE_CHANNELS = 'global/metrics/channels';
 
     /**
      * Is active?
@@ -25,6 +25,25 @@ class Hackathon_Metrics_Model_Config extends Mage_Core_Model_Abstract
     public function isActive()
     {
         return Mage::helper('hackathon_metrics')->isModuleOutputEnabled();
+    }
+
+    /**
+     * Retrieve the channels model
+     * @return array
+     */
+    public function getActiveChannels()
+    {
+        if (!$activeChannels = $this->getData('_active_channels')) {
+            $activeChannels = [];
+            $config = Mage::app()->getConfig();
+            $nodes = $config->getNode(self::CONFIG_XML_NODE_CHANNELS)->children();
+            foreach ($nodes as $node) {
+                $activeChannels[$node->getName()] = Mage::getSingleton((string) $node->model);
+            }
+            $this->setData('_active_channels', $activeChannels);
+        }
+
+        return $activeChannels;
     }
 
 }

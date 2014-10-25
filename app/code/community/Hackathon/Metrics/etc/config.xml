@@ -40,6 +40,14 @@
             </sales_order_place_after>
 
         </events>
+
+        <metrics>
+            <channels>
+                <datadog_socket>
+                    <model>hackathon_metrics/channel_datadog_socket</model>
+                </datadog_socket>
+            </channels>
+        </metrics>
     </global>
     <frontend>
         <events>

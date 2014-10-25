@@ -21,10 +21,30 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
-                <datadog translate="label" module="hackathon_metrics">
-                    <label>Datadog</label>
+                <datadog_socket translate="label" module="hackathon_metrics">
+                    <label>Datadog Socket</label>
                     <frontend_type>select</frontend_type>
                     <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <if_module_enabled>Hackathon_Metrics</if_module_enabled>
+                    <fields>
+                        <active translate="label" module="hackathon_metrics">
+                            <label>Is active</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                    </fields>
+                </datadog_socket>
+                <datadog_api translate="label" module="hackathon_metrics">
+                    <label>Datadog API</label>
+                    <frontend_type>select</frontend_type>
+                    <sort_order>200</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -52,7 +72,7 @@
                             <comment><![CDATA[Put here the same API key as the one set on the Datadog agent in your server.]]></comment>
                         </api_key>
                     </fields>
-                </datadog>
+                </datadog_api>
             </groups>
         </hackathon_metrics>
     </sections>
