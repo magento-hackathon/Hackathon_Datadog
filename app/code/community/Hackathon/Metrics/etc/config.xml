@@ -27,5 +27,18 @@
                 <class>Hackathon_Metrics_Model</class>
             </hackathon_metrics>
         </models>
+
+        <events>
+
+            <sales_order_place_after>
+                <observers>
+                    <hackathon_metrics_sales_order_place_after>
+                        <class>hackathon_metrics/observer_sales</class>
+                        <method>salesOrderPlaceAfter</method>
+                    </hackathon_metrics_sales_order_place_after>
+                </observers>
+            </sales_order_place_after>
+
+        </events>
     </global>
 </config>
