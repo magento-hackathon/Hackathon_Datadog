@@ -10,10 +10,17 @@
  */
 
 /**
- * Interface Model
+ * Channel_Interface Interface
  * @package Hackathon_Metrics
  */
-interface Hackathon_Metrics_Model_Interface
+interface Hackathon_Metrics_Model_Channel_Interface
 {
-    public function pushData($key, $value);
+
+    /**
+     * Send data
+     * @param string $key The metric key
+     * @param string|int $value the metric value
+     */
+    public function send($key, $value);
+
 }

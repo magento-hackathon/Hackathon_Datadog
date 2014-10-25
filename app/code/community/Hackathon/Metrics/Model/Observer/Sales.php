@@ -30,9 +30,10 @@ class Hackathon_Metrics_Model_Observer_Sales
 
         /** @var Hackathon_Metrics_Model_Queue $queue */
         $queue = Mage::getSingleton('hackathon_metrics/queue');
-
-        $queue->addMessage($originalKey, $orderAmount);
-        $queue->addMessage($baseKey, $baseAmount);
+        $queue
+            ->addMessage($originalKey, $orderAmount)
+            ->addMessage($baseKey, $baseAmount)
+        ;
 
         return;
     }

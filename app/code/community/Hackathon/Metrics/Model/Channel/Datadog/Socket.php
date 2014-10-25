@@ -13,7 +13,9 @@
  * Channel_Datadog_Socket Model
  * @package Hackathon_Metrics
  */
-class Hackathon_Metrics_Model_Channel_Datadog_Socket extends Mage_Core_Model_Abstract
+class Hackathon_Metrics_Model_Channel_Datadog_Socket
+    extends Hackathon_Metrics_Model_Channel_Abstract
+    implements Hackathon_Metrics_Model_Channel_Interface
 {
 
 }

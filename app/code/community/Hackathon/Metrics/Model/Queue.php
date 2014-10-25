@@ -18,25 +18,31 @@ class Hackathon_Metrics_Model_Queue
      *
      * @param $key
      * @param $value
+     * @return Hackathon_Metrics_Model_Queue
      */
     public function addMessage($key, $value)
     {
         $this->_messages[$key] = $value;
+        return $this;
     }
 
     public function __destruct()
     {
-        $this->sendMessages();
+        $this->_sendMessages();
     }
 
-    public function sendMessages()
+    protected function _sendMessages()
     {
         foreach ($this->getActiveChannels() as $channel) {
-            // TODO check if $channel follows interface
+            if (!$channel instanceof Hackathon_Metrics_Model_Channel_Interface) {
+                throw new ErrorException("Your channel doesn't implement the channel interface.");
+            }
 
             foreach ($this->_messages as $key => $value) {
                 $channel->send($key, $value);
             }
+
+            $this->_messages = [];
         }
     }
 
@@ -47,8 +53,6 @@ class Hackathon_Metrics_Model_Queue
      */
     protected function getActiveChannels()
     {
-        $channels = array();
-
-        // TODO implement
+        return Mage::getModel('hackathon_metrics/config')->getActiveChannels();
     }
 }

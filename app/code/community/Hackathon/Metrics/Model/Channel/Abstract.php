@@ -10,14 +10,20 @@
  */
 
 /**
- * Abstract Model
+ * Channel_Abstract Model
  * @package Hackathon_Metrics
  */
-class Hackathon_Metrics_Model_Abstract
+class Hackathon_Metrics_Model_Channel_Abstract
     extends Mage_Core_Model_Abstract
-    implements Hackathon_Metrics_Model_Interface
+    implements Hackathon_Metrics_Model_Channel_Interface
 {
-    public function pushData($key, $value){
 
+    /**
+     * {@inheritdoc}
+     */
+    public function send($key, $value)
+    {
+        throw new RuntimeException("Please implement first!");
     }
+
 }
