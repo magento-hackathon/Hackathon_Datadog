@@ -21,13 +21,14 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
-                <general translate="label" module="hackathon_metrics">
-                    <label>General</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>10</sort_order>
+                <datadog translate="label" module="hackathon_metrics">
+                    <label>Datadog</label>
+                    <frontend_type>select</frontend_type>
+                    <sort_order>100</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <if_module_enabled>Hackathon_Metrics</if_module_enabled>
                     <fields>
                         <active translate="label" module="hackathon_metrics">
                             <label>Is active</label>
@@ -37,10 +38,21 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment><![CDATA[You can completely disable the metrics.]]></comment>
                         </active>
+                        <api_key translate="label" module="hackathon_metrics">
+                            <label>API key</label>
+                            <depends>
+                                <active>1</active>
+                            </depends>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Put here the same API key as the one set on the Datadog agent in your server.]]></comment>
+                        </api_key>
                     </fields>
-                </general>
+                </datadog>
             </groups>
         </hackathon_metrics>
     </sections>

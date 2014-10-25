@@ -24,9 +24,7 @@ class Hackathon_Metrics_Model_Config extends Mage_Core_Model_Abstract
      */
     public function isActive()
     {
-        return Mage::helper('hackathon_metrics')->isModuleOutputEnabled()
-            && Mage::getStoreConfigFlag(self::CONFIG_XML_PATH_GENERAL_ACTIVE)
-        ;
+        return Mage::helper('hackathon_metrics')->isModuleOutputEnabled();
     }
 
 }
