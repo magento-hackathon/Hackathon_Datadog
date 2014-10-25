@@ -16,4 +16,17 @@
 class Hackathon_Metrics_Model_Config extends Mage_Core_Model_Abstract
 {
 
+    const CONFIG_XML_PATH_GENERAL_ACTIVE = 'hackathon_metrics/general/is_active';
+
+    /**
+     * Is active?
+     * @return bool
+     */
+    public function isActive()
+    {
+        return Mage::helper('hackathon_metrics')->isModuleOutputEnabled()
+            && Mage::getStoreConfigFlag(self::CONFIG_XML_PATH_GENERAL_ACTIVE)
+        ;
+    }
+
 }
