@@ -25,4 +25,16 @@ class Hackathon_Metrics_Model_Observer_Catalog
         $queue = Mage::getSingleton('hackathon_metrics/queue');
         $queue->addMessage($key);
     }
+
+    public function sendfriendProduct(Varien_Event_Observer $observer)
+    {
+        /** @var Mage_Catalog_Model_Product $product */
+        $product = $observer->getProduct();
+
+        $key = 'magento.catalog.product.sendfriend.' . $product->getSku();
+
+        /** @var Hackathon_Metrics_Model_Queue $queue */
+        $queue = Mage::getSingleton('hackathon_metrics/queue');
+        $queue->addMessage($key);
+    }
 }

@@ -71,6 +71,15 @@
                 </observers>
             </catalog_controller_product_view>
 
+            <sendfriend_product>
+                <observers>
+                    <hackathon_metrics_sendfriend_product>
+                        <class>hackathon_metrics/observer_catalog</class>
+                        <method>sendfriendProduct</method>
+                    </hackathon_metrics_sendfriend_product>
+                </observers>
+            </sendfriend_product>
+
         </events>
 
     </frontend>
