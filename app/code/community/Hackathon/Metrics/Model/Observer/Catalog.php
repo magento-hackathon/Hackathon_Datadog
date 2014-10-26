@@ -9,17 +9,20 @@
  * @copyright Copyright (c) 2014 Magento Hackathon (http://mage-hackathon.de)
  */
 
-class Hackathon_Metrics_Model_Observer_Customer
+class Hackathon_Metrics_Model_Observer_Catalog
 {
     /**
      * @param Varien_Event_Observer $observer
      */
-    public function customerCustomerAuthenticated(Varien_Event_Observer $observer)
+    public function catalogControllerProductView(Varien_Event_Observer $observer)
     {
+        /** @var Mage_Catalog_Model_Product $product */
+        $product = $observer->getProduct();
+
+        $key = 'magento.catalog.product.view.' . $product->getSku();
+
         /** @var Hackathon_Metrics_Model_Queue $queue */
         $queue = Mage::getSingleton('hackathon_metrics/queue');
-        $queue->addMessage('magento.customer.loggedin');
-
-        return;
+        $queue->addMessage($key);
     }
 }
