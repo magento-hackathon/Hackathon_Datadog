@@ -80,6 +80,17 @@
                 </observers>
             </sendfriend_product>
 
+            <!-- CORE EVENTS -->
+            <controller_action_layout_load_before>
+                <observers>
+                    <hackathon_metrics_controller_action_layout_load_before>
+                        <class>hackathon_metrics/observer_core</class>
+                        <method>controllerActionLayoutLoadBefore</method>
+                    </hackathon_metrics_controller_action_layout_load_before>
+                </observers>
+            </controller_action_layout_load_before>
+
+
         </events>
 
     </frontend>
