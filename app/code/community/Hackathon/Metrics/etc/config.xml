@@ -39,6 +39,15 @@
                 </observers>
             </sales_order_place_after>
 
+            <customer_customer_authenticated>
+                <observers>
+                    <hackathon_metrics_customer_customer_authenticated>
+                        <class>hackathon_metrics/observer_customer</class>
+                        <method></method>
+                    </hackathon_metrics_customer_customer_authenticated>
+                </observers>
+            </customer_customer_authenticated>
+
         </events>
 
         <metrics>
