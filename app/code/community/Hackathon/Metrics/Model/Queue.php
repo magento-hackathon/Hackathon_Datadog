@@ -20,7 +20,7 @@ class Hackathon_Metrics_Model_Queue
      * @param $value
      * @return Hackathon_Metrics_Model_Queue
      */
-    public function addMessage($key, $value, $type)
+    public function addMessage($key, $value, $type = Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_INCREMENT)
     {
         $this->_messages[$key] = [
             'value' => $value,
