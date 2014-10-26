@@ -37,13 +37,20 @@ class Hackathon_Metrics_Model_Queue
 
     protected function _sendMessages()
     {
+        $store  = Mage::app()->getStore();
+        $prefix = sprintf(
+            'magento.%s.%s.%s.',
+             $store->getWebsite()->getCode(),
+             'group_' . $store->getGroupId(),
+             $store->getCode()
+        );
         foreach ($this->getActiveChannels() as $channel) {
             if (!$channel instanceof Hackathon_Metrics_Model_Channel_Interface) {
                 throw new ErrorException("Your channel doesn't implement the channel interface.");
             }
 
             foreach ($this->_messages as $data) {
-                $channel->send($data['key'], $data['value'], $data['type']);
+                $channel->send($prefix . $data['key'], $data['value'], $data['type']);
             }
 
             $this->_messages = [];
