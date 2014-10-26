@@ -23,9 +23,24 @@ class Hackathon_Metrics_Model_Channel_Datadog_Socket
     /**
      * {@inheritdoc}
      */
-    public function send($key, $value)
+    public function send($key, $value, $type)
     {
-        Datadogstatsd::increment($key, $value);
+        switch ($type) {
+            case Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_INCREMENT:
+                Datadogstatsd::increment($key);
+                break;
+            case Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_HISTOGRAM:
+                Datadogstatsd::histogram($key, $value);
+                break;
+            case Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_GAUGE:
+                Datadogstatsd::gauge($key, $value);
+                break;
+            case Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_TIMING:
+                Datadogstatsd::timing($key, microtime());
+                break;
+            default:
+                throw new ErrorException("This type doesn't exist.");
+        }
         return $this;
     }
 
