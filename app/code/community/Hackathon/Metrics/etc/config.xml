@@ -28,6 +28,17 @@
             </hackathon_metrics>
         </models>
 
+        <metrics>
+            <channels>
+                <datadog_socket>
+                    <model>hackathon_metrics/channel_datadog_socket</model>
+                </datadog_socket>
+            </channels>
+        </metrics>
+    </global>
+
+    <frontend>
+
         <events>
 
             <!-- SALES ORDER EVENTS -->
@@ -62,24 +73,5 @@
 
         </events>
 
-        <metrics>
-            <channels>
-                <datadog_socket>
-                    <model>hackathon_metrics/channel_datadog_socket</model>
-                </datadog_socket>
-            </channels>
-        </metrics>
-    </global>
-    <frontend>
-        <events>
-            <controller_action_layout_load_before>
-                <observers>
-                    <hackathon_metrics>
-                        <class>hackathon_metrics/observer</class>
-                        <method>test</method>
-                    </hackathon_metrics>
-                </observers>
-            </controller_action_layout_load_before>
-        </events>
     </frontend>
 </config>
