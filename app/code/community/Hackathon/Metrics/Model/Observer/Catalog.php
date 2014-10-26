@@ -19,7 +19,7 @@ class Hackathon_Metrics_Model_Observer_Catalog
         /** @var Mage_Catalog_Model_Product $product */
         $product = $observer->getProduct();
 
-        $key = 'magento.catalog.product.view.' . $product->getSku();
+        $key = 'catalog_product.view.' . $product->getSku();
 
         /** @var Hackathon_Metrics_Model_Queue $queue */
         $queue = Mage::getSingleton('hackathon_metrics/queue');
@@ -31,7 +31,7 @@ class Hackathon_Metrics_Model_Observer_Catalog
         /** @var Mage_Catalog_Model_Product $product */
         $product = $observer->getProduct();
 
-        $key = 'magento.catalog.product.sendfriend.' . $product->getSku();
+        $key = 'catalog_product.sendfriend.' . $product->getSku();
 
         /** @var Hackathon_Metrics_Model_Queue $queue */
         $queue = Mage::getSingleton('hackathon_metrics/queue');

@@ -18,7 +18,7 @@ class Hackathon_Metrics_Model_Observer_Customer
     {
         /** @var Hackathon_Metrics_Model_Queue $queue */
         $queue = Mage::getSingleton('hackathon_metrics/queue');
-        $queue->addMessage('magento.customer.loggedin');
+        $queue->addMessage('customer.login');
 
         return;
     }

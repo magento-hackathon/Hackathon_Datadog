@@ -22,11 +22,11 @@ class Hackathon_Metrics_Model_Observer_Sales
 
         $orderAmount = $order->getGrandTotal();
         $orderCurrency = $order->getOrderCurrency();
-        $originalKey = 'magento.sales_order.' . $orderCurrency;
+        $originalKey = 'sales_order.' . $orderCurrency;
 
         $baseCurrency = $order->getBaseCurrency();
         $baseAmount = $order->getGrandTotal();
-        $baseKey = 'magento.sales_order'.$baseCurrency;
+        $baseKey = 'sales_order'.$baseCurrency;
 
         /** @var Hackathon_Metrics_Model_Queue $queue */
         $queue = Mage::getSingleton('hackathon_metrics/queue');
