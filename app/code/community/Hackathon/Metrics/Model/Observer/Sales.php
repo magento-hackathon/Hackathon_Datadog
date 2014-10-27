@@ -17,23 +17,21 @@ class Hackathon_Metrics_Model_Observer_Sales
      */
     public function salesOrderPlaceAfter(Varien_Event_Observer $observer)
     {
+        /** @var Hackathon_Metrics_Model_Queue $queue */
+        $queue = Mage::getSingleton('hackathon_metrics/queue');
+
         /** @var Mage_Sales_Model_Order $order */
         $order = $observer->getOrder();
 
-        $orderAmount = $order->getGrandTotal();
-        $orderCurrency = $order->getOrderCurrency();
-        $originalKey = 'sales_order.' . $orderCurrency;
+        // Order currency
+        $queue->addMessage('sales_order', $order->getGrandTotal(), [
+            'currency' => $order->getOrderCurrency()
+        ]);
 
-        $baseCurrency = $order->getBaseCurrency();
-        $baseAmount = $order->getGrandTotal();
-        $baseKey = 'sales_order'.$baseCurrency;
-
-        /** @var Hackathon_Metrics_Model_Queue $queue */
-        $queue = Mage::getSingleton('hackathon_metrics/queue');
-        $queue
-            ->addMessage($originalKey, $orderAmount)
-            ->addMessage($baseKey, $baseAmount)
-        ;
+        // Base currency
+        $queue->addMessage('sales_order.base', $order->getBaseGrandTotal(), [
+            'currency' => $order->getBaseCurrency()
+        ]);
 
         return;
     }

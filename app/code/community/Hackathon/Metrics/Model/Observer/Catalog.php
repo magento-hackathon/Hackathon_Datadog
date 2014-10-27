@@ -19,11 +19,13 @@ class Hackathon_Metrics_Model_Observer_Catalog
         /** @var Mage_Catalog_Model_Product $product */
         $product = $observer->getProduct();
 
-        $key = 'catalog_product.view.' . $product->getSku();
+        $key = 'catalog_product.view';
 
         /** @var Hackathon_Metrics_Model_Queue $queue */
         $queue = Mage::getSingleton('hackathon_metrics/queue');
-        $queue->addMessage($key);
+        $queue->addMessage($key, [
+            'sku' => $product->getSku()
+        ]);
     }
 
     public function sendfriendProduct(Varien_Event_Observer $observer)
@@ -31,10 +33,12 @@ class Hackathon_Metrics_Model_Observer_Catalog
         /** @var Mage_Catalog_Model_Product $product */
         $product = $observer->getProduct();
 
-        $key = 'catalog_product.sendfriend.' . $product->getSku();
+        $key = 'catalog_product.sendfriend';
 
         /** @var Hackathon_Metrics_Model_Queue $queue */
         $queue = Mage::getSingleton('hackathon_metrics/queue');
-        $queue->addMessage($key);
+        $queue->addMessage($key, [
+            'sku' => $product->getSku(),
+        ]);
     }
 }

@@ -21,7 +21,7 @@ class Hackathon_Metrics_Model_Channel_Abstract
     /**
      * {@inheritdoc}
      */
-    public function send($key, $value, $type)
+    public function send($key, $value, array $tags, $type)
     {
         throw new RuntimeException("Please implement first!");
     }

@@ -16,10 +16,12 @@ class Hackathon_Metrics_Model_Observer_Core
         /** @var Mage_Core_Controller_Varien_Action $action */
         $action = $observer->getAction();
 
-        $key = 'core.page.view.' . $action->getFullActionName();
+        $key = 'core.page.view';
 
         /** @var Hackathon_Metrics_Model_Queue $queue */
         $queue = Mage::getSingleton('hackathon_metrics/queue');
-        $queue->addMessage($key);
+        $queue->addMessage($key, [
+            'action' => $action->getFullActionName()
+        ]);
     }
 }

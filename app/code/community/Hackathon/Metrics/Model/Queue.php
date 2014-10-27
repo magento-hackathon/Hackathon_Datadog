@@ -20,12 +20,13 @@ class Hackathon_Metrics_Model_Queue
      * @param $value
      * @return Hackathon_Metrics_Model_Queue
      */
-    public function addMessage($key, $value = null, $type = Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_INCREMENT)
+    public function addMessage($key, $value = null, $tags = [], $type = Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_INCREMENT)
     {
         $this->_messages[] = [
             'key'   => $key,
             'type'  => $type,
             'value' => $value,
+            'tags'  => $tags,
         ];
         return $this;
     }
@@ -38,19 +39,18 @@ class Hackathon_Metrics_Model_Queue
     protected function _sendMessages()
     {
         $store  = Mage::app()->getStore();
-        $prefix = sprintf(
-            'magento.%s.%s.%s.',
-             $store->getWebsite()->getCode(),
-             'group_' . $store->getGroupId(),
-             $store->getCode()
-        );
+        $mainTags = [
+            'website'     => $store->getWebsite()->getCode(),
+            'store_group' => $store->getGroupId(),
+            'store'       => $store->getCode()
+        ];
         foreach ($this->getActiveChannels() as $channel) {
             if (!$channel instanceof Hackathon_Metrics_Model_Channel_Interface) {
                 throw new ErrorException("Your channel doesn't implement the channel interface.");
             }
 
             foreach ($this->_messages as $data) {
-                $channel->send($prefix . $data['key'], $data['value'], $data['type']);
+                $channel->send($data['key'], $data['value'], $data['tags'] + $mainTags, $data['type']);
             }
 
             $this->_messages = [];
