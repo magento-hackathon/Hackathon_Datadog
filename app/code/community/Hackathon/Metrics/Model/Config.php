@@ -22,6 +22,7 @@ class Hackathon_Metrics_Model_Config extends Mage_Core_Model_Abstract
     const CHANNEL_MESSAGE_TYPE_HISTOGRAM = 'histogram';
     const CHANNEL_MESSAGE_TYPE_GAUGE     = 'gauge';
     const CHANNEL_MESSAGE_TYPE_TIMING    = 'timing';
+    const CHANNEL_MESSAGE_TYPE_SET       = 'set';
 
     /**
      * Is active?

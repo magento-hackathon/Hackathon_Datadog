@@ -38,6 +38,9 @@ class Hackathon_Metrics_Model_Channel_Datadog_Socket
             case Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_TIMING:
                 Datadogstatsd::timing($key, microtime(), 1, $tags);
                 break;
+            case Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_SET:
+                Datadogstatsd::set($key, $value, 1, $tags);
+                break;
             default:
                 throw new ErrorException("This type doesn't exist.");
         }
