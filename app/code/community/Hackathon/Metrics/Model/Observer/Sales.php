@@ -26,12 +26,12 @@ class Hackathon_Metrics_Model_Observer_Sales
         // Order currency
         $queue->addMessage('sales_order', $order->getGrandTotal(), [
             'currency' => $order->getOrderCurrency()
-        ]);
+        ], Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_HISTOGRAM);
 
         // Base currency
         $queue->addMessage('sales_order.base', $order->getBaseGrandTotal(), [
             'currency' => $order->getBaseCurrency()
-        ]);
+        ], Hackathon_Metrics_Model_Config::CHANNEL_MESSAGE_TYPE_HISTOGRAM);
 
         return;
     }
