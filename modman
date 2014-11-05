@@ -1,3 +1,0 @@
-app/code/community/Hackathon/Metrics app/code/community/Hackathon/Metrics
-app/etc/modules/Hackathon_Metrics.xml app/etc/modules/Hackathon_Metrics.xml
-lib/datadog/Datadogstatsd.php lib/datadog/Datadogstatsd.php
