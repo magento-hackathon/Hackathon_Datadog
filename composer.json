@@ -13,8 +13,7 @@
         }
     ],
     "require":     {
-        "magento-hackathon/magento-composer-installer": "*",
-        "magento/core": "1.9.0.1"
+        "magento-hackathon/magento-composer-installer": "*"
     },
     "extra": {
         "magento-root-dir": "htdocs/"
